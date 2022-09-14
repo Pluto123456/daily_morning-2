@@ -67,8 +67,8 @@ def get_memorial_days_count1():
   if start_date1 is None:
     print('没有设置 START_DATE1')
     return 0
-  delta1 = today - datetime.strptime(start_date1, "%Y-%m-%d")
-  return delta1.days
+  delta = today - datetime.strptime(start_date1, "%Y-%m-%d")
+  return delta.days
 
 
 
