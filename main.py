@@ -13,7 +13,7 @@ today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d") #今天的日期
 start_date = os.getenv('START_DATE')
 city = os.getenv('CITY')
 birthday = os.getenv('BIRTHDAY')
-
+start_date1 = os.getenv('START_DATE1')#获取上次分开的日期
 app_id = os.getenv('APP_ID')
 app_secret = os.getenv('APP_SECRET')
 
@@ -60,6 +60,17 @@ def get_memorial_days_count():
     return 0
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
+
+
+# 计算上次见面到现在的日子
+def get_memorial_days_count1():
+  if start_date1 is None:
+    print('没有设置 START_DATE1')
+    return 0
+  delta1 = today - datetime.strptime(start_date1, "%Y-%m-%d")
+  return delta1.days
+
+
 
 # 各种倒计时
 def get_counter_left(aim_date):
@@ -151,6 +162,10 @@ data = {
   },
   "love_days": {
     "value": get_memorial_days_count(),
+    "color": get_random_color()
+  },
+"love_days1": {
+    "value": get_memorial_days_count1(),
     "color": get_random_color()
   },
   "words": {
